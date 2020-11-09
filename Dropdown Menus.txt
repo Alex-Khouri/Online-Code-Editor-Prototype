@@ -1,0 +1,5 @@
+FILE: Save As, Super Save, Share, Return to Drive
+EDIT: Undo, Redo, Cut, Copy, Paste, Find on Page
+VIEW: Clear Output, Fullscreen, Zoom In, Zoom Out
+TOOLS: Run Code, Version Map
+HELP: Report Issue, Tips & Tricks, About Doogle Dev

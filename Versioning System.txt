@@ -1,0 +1,12 @@
+* Each new program begins at V1.
+
+* A Super Save increments the current version number (e.g. V1 + Super Save = V2).
+
+* If a user reverts to a previous version and then Super Saves, a separate version path is created from that point (e.g. V2 + Reversion to V1 + Super Save = V1.1).
+
+* An automatic Super Save will occur if the user does any of the following after making changes since the last Super Save:
+	- Reverts to a previous version
+	- Closes the editor
+	- Experiences a program crash
+
+* [FOR REPORT ONLY - DO NOT TEST] If users have made unsaved changes to their current version, they can revert to that version using the normal process. This will create a new Super Save with their existing changes, and allow them to create a separate path from that current point (e.g. V2 + Changes + Reversion to V2 + Super Save = V2.1 + V3 [V3 created by reversion]).

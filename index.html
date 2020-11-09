@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--Website Prototype for Compsci 345 Assignment 3-->
+<!--AUTHORS: Alexander Khouri, Michael Johnson, Hazel Watson-Smith, Anastasia Baranova-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no">
+        <link id="favicon" rel="icon" href="Images/Google Drive Icon.png">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="w3schools.css">
+        <script src="index.js" defer></script>
+        <script src="w3schools.js" defer></script>
+        <title id="title">CS345 Shared Files - Doogle Drive</title>
+    </head>
+    <body id="body" class="driveBackground">
+        <a id="driveContextEntry" onclick="loadDev();"><img class="driveContextMenuEntry" src="Images/Drive Context Menu Entry.jpg" alt="Dev Context Menu Entry"></a>
+
+        <div id="devMain" class="hidden">
+            <div id="devMainBanner" class="banner">
+                <img class="devLogo" src="Images/Dev Logo.jpg" alt="Dev Logo">
+                <div id="devDropdownButtons" style="margin-left:30px;">
+                    <div id="dropdownButtonFile" class="dropdown">
+                        <button class="dropbtn" onclick="openDropdown('dropdownContentFile');">File</button>
+                        <div id="dropdownContentFile" class="dropdown-content">
+                            <a>New</a>
+                            <a>Save As</a>
+                            <a>Super Save</a>
+                            <a>Share</a>
+                            <a>Settings</a>
+                            <a>Exit to Drive</a>
+                        </div>
+                    </div>
+                    <div id="dropdownButtonEdit" class="dropdown">
+                        <button class="dropbtn" onclick="openDropdown('dropdownContentEdit');">Edit</button>
+                        <div id="dropdownContentEdit" class="dropdown-content">
+                            <a>Undo</a>
+                            <a>Redo</a>
+                            <a>Cut</a>
+                            <a>Copy</a>
+                            <a>Paste</a>
+                            <a>Find on Page</a>
+                        </div>
+                    </div>
+                    <div id="dropdownButtonView" class="dropdown">
+                        <button class="dropbtn" onclick="openDropdown('dropdownContentView');">View</button>
+                        <div id="dropdownContentView" class="dropdown-content">
+                            <a>Clear Output</a>
+                            <a>Fullscreen</a>
+                            <a>Zoom In</a>
+                            <a>Zoom Out</a>
+                        </div>
+                    </div>
+                    <div id="dropdownButtonTools" class="dropdown">
+                        <button class="dropbtn" onclick="openDropdown('dropdownContentTools');">Tools</button>
+                        <div id="dropdownContentTools" class="dropdown-content">
+                            <a>Run Code</a>
+                            <a>Version Map</a>
+                            <a>Accessability</a>
+                        </div>
+                    </div>
+                    <div id="dropdownButtonHelp" class="dropdown">
+                        <button class="dropbtn" onclick="openDropdown('dropdownContentHelp');">Help</button>
+                        <div id="dropdownContentHelp" class="dropdown-content">
+                            <a>Report an Issue</a>
+                            <a>Tips & Tricks</a>
+                            <a>About Doogle Dev</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="devFunctionButtons" style="margin-left:30px;">
+                    <div class="buttonStripItem">
+                        <button class="functionButton" onclick="superSave();"><img class="functionImage" src="Images/Super Save Button.jpg" alt="Super Save" title="Super Save"></button>
+                    </div>
+                    <div class="buttonStripItem">
+                        <button id="runCodeButton" class="functionButton" onclick="runCode();"><img id="runCodeImage" class="functionImage" src="Images/Run Code Button Active.jpg" alt="Run Code" title="Run Code"></button>
+                    </div>
+                    <div class="buttonStripItem">
+                        <button class="functionButton" onclick="popUp(1);"><img class="functionImage" src="Images/Share Button Active.jpg" alt="Share" title="Share"></button>
+                    </div>
+                </div>
+                <div id="searchFunction" class="searchBox">
+                    <td><input id="search_term" class="input" type="text" value="" placeholder="Enter search term"/></td>
+                    <td><button id="search_button" class="submit" type="button" onclick="search(document.getElementById('search_term').value);">SEARCH</button></td>
+                    <td><button id="clear_button" class="submit" type="button" onclick="clearSearch();">CLEAR</button></td>
+                </div>
+                <div id="userIcons" class="userIconPanel">
+                    <!--Each user gets added here after a stepped timer-->
+                </div>
+            </div>
+            <div id="overlay" class="overlay">
+                <div id="share_popup" class="popup">
+                    <h3 class="message">SHARE THIS FILE:</h3>
+                    <br>
+                    <a class="close" onclick="popUpClose()">&times;</a>
+                    <div class="message">
+                        <label for="email" id="message"></label>
+                        <input name="email" id="email" class="input" type="text" value="" placeholder="Enter an email"/>
+                        <select name="permissions" id="permission_list" class="input">
+                            <option id="list_default" value="none" selected="selected" disabled hidden>Select recipient permission:</option>
+                            <option value="read">Read</option>
+                            <option value="comment">Read + Comment</option>
+                            <option value="edit-execute">Read + Comment + Edit/Run</option>
+                            <option value="all">Read + Comment + Edit/Run + Modify Access</option>
+                        </select>
+                        <button id="share_button" class="submit" type="button" onclick="share();">SHARE</button>
+                        <p id="share_success" style="color: #4BFF00; display: none">SUCCESSFULLY SHARED!</p>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-width:4px; border-color:#000000; border-radius: 5px;">
+            <table style="width:100%; min-height:480px; color:#DFDFDF;">
+                <tr>
+                    <td class="versionMapWindow">
+                        <b>VERSION MAP:</b>
+                        <hr style="border-width:2px; border-color:#000000; border-radius: 5px;">
+                        <img id="versionMap" class="versionMapImage" src="Images/Version Map First 3.jpg" alt="Version Map" usemap="#versionMapFirst">
+                            <map name="versionMapFirst">
+                                <area shape="rect" coords="0,0,72,72" alt="Version Node" style="cursor:pointer;" onclick="setVersion('1')">
+                                <area shape="rect" coords="0,107,72,179" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2')">
+                                <area shape="rect" coords="107,107,179,179" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2.1')">
+                                <area shape="rect" coords="107,214,179,286" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2.2')">
+                                <area shape="rect" coords="0,214,72,286" alt="Version Node" style="cursor:pointer;" onclick="setVersion('3')">
+                            </map>
+                            <map name="versionMapSecond">
+                                <area shape="rect" coords="0,0,72,72" alt="Version Node" style="cursor:pointer;" onclick="setVersion('1')">
+                                <area shape="rect" coords="0,107,72,179" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2')">
+                                <area shape="rect" coords="107,107,179,179" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2.1')">
+                                <area shape="rect" coords="107,214,179,286" alt="Version Node" style="cursor:pointer;" onclick="setVersion('2.2')">
+                                <area shape="rect" coords="0,214,72,286" alt="Version Node" style="cursor:pointer;" onclick="setVersion('3')">
+                                <area shape="rect" coords="0,321,72,393" alt="Version Node" style="cursor:pointer;" onclick="setVersion('4')">
+                            </map>
+                    </td>
+                    <td style="width:55%;">
+                        <div id="codeInput" class="codeInputWindow">variable1 = "Hello"<br>variable2 = "world"<br>variable3 = " "<br>print(variable1 + variable3 + variable2)</div>
+                        <div id="codeOutput" class="codeOutputWindow">&gt;&gt; </div>
+                    </td>
+                    <td id="comments" style="width: 25%;">
+                        <div class="commentsWindow">
+                            <div style="text-align:center;">
+                                <b>COMMENTS:</b>
+                            </div>
+                            <hr style="border-width:2px; border-color:#000000; border-radius: 5px;">
+                            <div id="commentsBody" class="commentsWindowBody">
+                                <!--Some comments will be added here after a stepped timer-->
+                            </div>
+                        </div>
+                        <div id="commentSubmission" class="commentSubmissionBox">
+                        <form onsubmit="submitComment('Alex', comment.value);return false;">
+                            <label for="comment"></label>
+                            <textarea type="text" id="comment" name="comment" rows="3" cols="25" style="resize:none;"></textarea>
+                            <input type="submit" value="Submit" style="vertical-align:top; height:53px;">
+                        </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

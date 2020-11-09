@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/****
+Website Prototype for Compsci 345 Assignment 3
+AUTHORS: Alexander Khouri, Michael Johnson, Hazel Watson-Smith, Anastasia Baranova
+****/
+
+* {
+    font-family: "Arial";
+  }
+
+img.driveContextMenuEntry {
+    width: 25%;
+    margin-left: 60%;
+    margin-top: 14%;
+    cursor: pointer;
+}
+img.devLogo {
+    height: 33px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+
+body.driveBackground {
+    background-image: url("Images/Drive Background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+body.devBackground {
+    background-color: #606060;
+    background-size: cover;
+}
+
+
+.buttonStripItem {
+    position: relative;
+    display: inline-block;
+}
+.functionButton {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    padding: 0px;
+    border-color: #202020;
+    border-width: 2px;
+}
+.functionButton:hover {
+    border: 2px solid #4BFF00;
+}
+.functionImage {
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+}
+
+
+.searchBox {
+    position: relative;
+    display: flex;
+    margin-left: 30px;
+    margin-top: 0px;
+    padding: 0px;   
+    width: 400px;
+    height: 35px;
+    background: #606060;
+    border: 2px solid #202020;
+    border-radius: 7px;
+    transition: all 5s ease-in-out;
+}
+    .input {
+        border: 1px solid #202020;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        width: 60%;
+        padding: 8px 8px;
+        margin: 0px;
+        box-sizing: border-box;
+        resize: none;
+        cursor: text;
+    }
+    .submit {
+        border: 1px solid #202020;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        background: #202020;
+        padding: 8px 8px;
+        margin: 0px;
+        width: 20%;
+        color: #dfdfdf;
+        cursor: pointer;
+    }
+    .submit:hover {
+        border: 1px solid #4BFF00;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        background: #202020;
+        padding: 8px 8px;
+        color: #4BFF00;
+    }
+
+
+    .userIconPanel {
+        position: relative;
+        display: flex;
+        margin-left: 30px;
+        height: 35px;
+        min-width: 280px;
+        border: 2px solid #000000;
+    }
+    .userIcon {
+        height: 35px;
+        width: 35px;
+        cursor: pointer;
+        padding: 0px;
+        border-color: #202020;
+        border-width: 1px;
+    }
+    .userIconImage {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+
+
+.versionMapWindow {
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    height: 470px;
+    vertical-align: top;
+}
+    .versionMapImage {
+        height: 430px;
+        width: auto;
+    }
+.codeInputWindow {
+    text-align: left;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    height: 370px;
+    font-family: "Courier";
+    font-weight: bold;
+}
+.codeOutputWindow {
+    text-align: left;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    height: 100px;
+    font-family: "Courier";
+    font-weight: bold;
+}
+.commentsWindow {
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 270px;
+    height: 417px;
+    vertical-align: top;
+}
+    .commentsWindowBody {
+        text-align: left;
+        width: 280px;
+        height: 200px;
+    }
+    .commentSubmissionBox {
+        vertical-align: middle;
+        border: 3px solid black;
+        border-radius: 5px;
+        padding: 5px;
+        width: 270px;
+        height: 53px;
+    }
+
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
+.center {
+    text-align: center;
+}
+.border {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    display: none;
+    opacity: 1;
+}
+.popup {
+    display: none;
+    margin: 100px auto;
+    padding: 20px;
+    background: #606060;
+    border: 3px solid #000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    width: 45%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+.popup h3 {
+    margin: 0;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+.popup .show {
+    visibility: visible;
+}
+.popup .close:hover {
+    color: #4bff00;
+}
+.popup .message {
+    max-height: 30%;
+    overflow: auto;
+}
+.message {
+    color: #dfdfdf
+}
